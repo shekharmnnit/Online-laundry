@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+	.tab button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    width: 100%;
+    border: 1px,solid;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+	}
+	
+	.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: green;
+    width: 10%;
+    height: 300px;
+}
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: 350px;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+	</style>
+	<!-- timer function -->
+<script type="text/javascript">
+	setInterval("validator()", 120000);
+	setInterval("fun()", 1000);
+	var x=02;
+	var y=00;
+	function fun(){
+	if(y==0){
+		document.getElementById("time1").value=x-1;	
+		document.getElementById("time2").value=59;
+		y=59;
+		x--;
+	}	
+	else
+	{
+		y--;
+		document.getElementById("time2").value=y;
+	}
+}
+</script>
+</head>
+<body style="background-color: gray">
+
+<!-- timer	 -->
+<input type="button" id="time1" value="2"/>:
+<input type="button" id="time2" value="00" /><br/>
+
+
+
+
+<!-- start tab -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'qno1')" id="defaultOpen"><kbd id="q1" class="finish">1.</kbd></button>
+  <button class="tablinks" onclick="openCity(event, 'qno2')"><kbd class="finish">2.</kbd></button>
+  <button class="tablinks" onclick="openCity(event, 'qno3')"><kbd class="finish">3.</kbd></button>
+  <button class="tablinks" onclick="openCity(event, 'qno4')"><kbd class="finish">4.</kbd></button>
+  <button class="tablinks" onclick="openCity(event, 'qno5')"><kbd class="finish">5.</kbd></button> 
+</div>
+<!-- next tab -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'qno6')"><kbd class="finish">6.</kbd></button>
+  <button class="tablinks" onclick="openCity(event, 'qno7')"><kbd class="finish">7.</kbd></button>
+  <button class="tablinks" onclick="openCity(event, 'qno8')"><kbd class="finish">8.</kbd>.</button>
+  <button class="tablinks" onclick="openCity(event, 'qno9')"><kbd class="finish">9.</kbd>.</button>
+  <button class="tablinks" onclick="openCity(event, 'qno10')"><kbd class="finish">10.</kbd></button> 
+  <button value="press me" style="background-color: red" onclick="validator()" />submit</button> 
+
+</div>
+
+
+
+
+<!-- first question -->
+<div id="qno1" class="tabcontent">
+  <p>Which of these diseases is not caused by improper disposal of sewage?</p>
+	<input type="radio" name="hallo" id="hallo" onclick="check('0')"/>Cholera<br/>
+	<input type="radio" name="hallo" id="bye" onclick="check('0')" />Heart Attack<br/>
+	<input type="radio" name="hallo" id="hy" onclick="check('0')" />typhoid<br/>
+</div>
+<!-- second question -->
+<div id="qno2" class="tabcontent">
+   <p>what do you do?</p>
+	<input type="radio" name="allo" id="run" onclick="check('1')" />run<br/>
+	<input type="radio" name="allo" id="mun" onclick="check('1')"  />mun<br/>
+	<input type="radio" name="allo" id="son" onclick="check('1')"  />son<br/>
+</div>
+
+
+
+
+<!-- script for tab contaant -->
+<script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+
+
+
+// red color afte click
+function check(a){
+	var c = document.getElementsByClassName("finish");
+		c[a].style.color="red";
+}
+
+
+// varify
+var z=0;
+function validator(){
+	if(document.getElementById("hallo").checked==true)
+		{
+		z++;
+		}
+	if(document.getElementById("run").checked==true)
+		{
+		z++;
+		}
+	document.write("score="+z);
+	alert("time up!!!");
+}
+</script>
+
+</body>
+</html>	
